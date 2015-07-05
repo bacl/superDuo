@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="primary">#83B600</color>
+    <color name="primary_dark">#6DA000</color>
+
+    <color name="primary_light">#E2F0B6</color>
+    <color name="widget_text_color">#000</color>
+
+
+
+
+
+
+
+<!--
+
+
     <color name="blue01">#0099CC</color>
     <color name="blue02">#079DD0</color>
     <color name="blue03">#0FA1D3</color>
@@ -76,5 +91,5 @@
     <color name="red13">#FFCACA</color>
     <color name="red14">#FFE4E4</color>
 
-
+-->
 </resources>
