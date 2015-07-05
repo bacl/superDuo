@@ -77,7 +77,10 @@ public class NavigationDrawerFragment extends Fragment {
             mFromSavedInstanceState = true;
         }else{
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+
             mCurrentSelectedPosition = Integer.parseInt(prefs.getString("pref_startFragment","0"));
+           // mCurrentSelectedPosition = prefs.getInt(getString(R.string.pref_startFragment_key), getResources().getInteger(R.integer.pref_startFragment_default) );
+
             selectItem(mCurrentSelectedPosition);
         }
 
@@ -273,7 +276,7 @@ public class NavigationDrawerFragment extends Fragment {
     /**
      * Callbacks interface that all activities using this fragment must implement.
      */
-    public static interface NavigationDrawerCallbacks {
+    public interface NavigationDrawerCallbacks {
         /**
          * Called when an item in the navigation drawer is selected.
          */

@@ -89,6 +89,10 @@
                         android:gravity="right|top"/>
                 </LinearLayout>
 
+                <!--
+                BRUNO:
+                    This undo button should not exist, because it is duplicating a system functionality that is always present on the UI
+
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -101,7 +105,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignRight="@+id/fullBookTitle"
                     android:layout_alignEnd="@+id/fullBookTitle"/>
-
+ -->
 
             </RelativeLayout>
 

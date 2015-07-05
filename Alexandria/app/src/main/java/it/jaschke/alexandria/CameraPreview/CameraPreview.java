@@ -12,6 +12,13 @@ import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.LuminanceSource;
+import com.google.zxing.NotFoundException;
+import com.google.zxing.PlanarYUVLuminanceSource;
+import com.google.zxing.Result;
+import com.google.zxing.common.HybridBinarizer;
+
 import java.io.IOException;
 
 /** A basic Camera preview class */
@@ -43,6 +50,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
             }
         }
         */
+
 
         // Install a SurfaceHolder.Callback so we get notified when the
         // underlying surface is created and destroyed.
