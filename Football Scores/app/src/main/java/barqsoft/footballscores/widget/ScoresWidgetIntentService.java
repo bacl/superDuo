@@ -61,7 +61,6 @@ public class ScoresWidgetIntentService extends IntentService {
         Cursor data = getContentResolver().query(todayUri, SCORES_COLUMNS, null, new String[]{Utilities.formatDate(System.currentTimeMillis())}, null);
 
 
-
         boolean hasData = (data != null) && data.moveToFirst();
 
 
@@ -80,13 +79,17 @@ public class ScoresWidgetIntentService extends IntentService {
                 } else {
                     layoutId = R.layout.widget_small;
                 }
-                  views = new RemoteViews(getPackageName(), layoutId);
+                views = new RemoteViews(getPackageName(), layoutId);
 
                 // Add the data to the RemoteViews
                 if (widgetWidth >= largeWidth) {
                     views.setImageViewResource(R.id.home_crest, Utilities.getTeamCrestByTeamName(data.getString(INDEX_HOME_COL)));
                     views.setImageViewResource(R.id.away_crest, Utilities.getTeamCrestByTeamName(data.getString(INDEX_AWAY_COL)));
                     views.setTextViewText(R.id.data_textview, data.getString(INDEX_TIME_COL));
+                    if (Build.VERSION.SDK_INT > Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
+                        views.setContentDescription(R.id.home_crest, null);
+                        views.setContentDescription(R.id.away_crest, null);
+                    }
                 }
 
 
@@ -97,7 +100,7 @@ public class ScoresWidgetIntentService extends IntentService {
 
                 // Content Descriptions for RemoteViews were only added in ICS MR1
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
-                    setRemoteContentDescription(views, "todo: description");
+                    setRemoteContentDescription(views, getString(R.string.widget_description));
                 }
                 // Create an Intent to launch MainActivity
                 Intent launchIntent = new Intent(this, MainActivity.class);
@@ -105,16 +108,16 @@ public class ScoresWidgetIntentService extends IntentService {
                 views.setOnClickPendingIntent(R.id.widget, pendingIntent);
 
 
-            }else{
-                views = new RemoteViews(getPackageName(),  R.layout.widget_small);
+            } else {
+                views = new RemoteViews(getPackageName(), R.layout.widget_small);
                 views.setTextViewText(R.id.home_name, getString(R.string.empty_list));
-                views.setTextViewText(R.id.away_name,  "");
+                views.setTextViewText(R.id.away_name, "");
                 views.setTextViewText(R.id.score_textview, "");
             }
             // Tell the AppWidgetManager to perform an update on the current app widget
             appWidgetManager.updateAppWidget(appWidgetId, views);
         }
-        data.close();//TODO:por tudo em vars??
+        data.close();
 
     }
 

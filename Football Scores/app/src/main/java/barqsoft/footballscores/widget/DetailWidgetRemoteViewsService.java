@@ -103,7 +103,13 @@ public class DetailWidgetRemoteViewsService extends RemoteViewsService {
 
                 // Content Descriptions for RemoteViews were only added in ICS MR1
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
-                    setRemoteContentDescription(views, "TODO: add description");// TODO: add description
+                    setRemoteContentDescription(views, getString(
+                                    R.string.widget_description,
+                                    data.getString(INDEX_HOME_COL),
+                                    data.getInt(INDEX_HOME_GOALS_COL),
+                                    data.getString(INDEX_AWAY_COL),
+                                    data.getInt(INDEX_AWAY_GOALS_COL))
+                    );
                 }
 
                 // Create an Intent to launch MainActivity
