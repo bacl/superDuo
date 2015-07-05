@@ -31,5 +31,6 @@
     <dimen name="widget_team_names">16sp</dimen>
     <dimen name="widget_score">28sp</dimen>
     <dimen name="widget_league">14sp</dimen>
- 
+    <dimen name="pager_divider_height">15sp</dimen>
+
 </resources>
