@@ -81,6 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:textSize="@dimen/team_names_text_size"
                 android:text="@string/test_text"/>
 
         </LinearLayout>

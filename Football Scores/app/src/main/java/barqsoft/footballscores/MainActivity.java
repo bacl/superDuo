@@ -1,7 +1,6 @@
 package barqsoft.footballscores;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -22,10 +21,8 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        Uri contentUriSelectedDay = getIntent() != null ? getIntent().getData() : null;
-//        if (contentUriSelectedDay != null) {
-//            forecastFragment.setInitialSelectedDate(WeatherContract.WeatherEntry.getDateFromUri(contentUriSelectedDay));
-//        }
+
+
         setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {
             my_main = new PagerFragment();

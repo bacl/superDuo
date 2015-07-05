@@ -40,14 +40,22 @@ public class MainScreenFragment extends Fragment implements LoaderManager.Loader
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             final Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState) {
+        /**
+         * BRUNO:
+         * ERROR - Updating the scores every time the user selects a different page fragment. This generates too many requests to the api server.
+         *
+         */
         update_scores();
+
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         final ListView score_list = (ListView) rootView.findViewById(R.id.scores_list);
+
         mAdapter = new ScoresAdapter(getActivity(), null, 0);
         score_list.setAdapter(mAdapter);
+
         getLoaderManager().initLoader(SCORES_LOADER, null, this);
+
         mAdapter.detail_match_id = MainActivity.selected_match_id;
         score_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -58,14 +66,15 @@ public class MainScreenFragment extends Fragment implements LoaderManager.Loader
                 mAdapter.notifyDataSetChanged();
             }
         });
+
+
         return rootView;
     }
 
     @Override
-    public Loader<Cursor> onCreateLoader(int i, Bundle bundle)
-    {
+    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         return new CursorLoader(getActivity(), DatabaseContract.scores_table.buildScoreWithDate(),
-                null,null,fragmentdate,null);
+                null, null, fragmentdate, null);
     }
 
     @Override

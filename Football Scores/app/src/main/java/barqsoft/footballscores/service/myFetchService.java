@@ -58,9 +58,7 @@ public class MyFetchService extends IntentService {
         String JSON_data = null;
         //Opening Connection
         try {
-//            URL fetch = new URL(fetch_build.toString());
-            String jdtemp = "http://api.football-data.org/alpha/fixtures/?timeFrameStart=2015-03-01&timeFrameEnd=2015-03-05";
-            URL fetch = new URL(jdtemp);
+            URL fetch = new URL(fetch_build.toString());
             m_connection = (HttpURLConnection) fetch.openConnection();
             m_connection.setRequestMethod("GET");
             m_connection.addRequestProperty("X-Auth-Token", "e136b7858d424b9da07c88f28b61989a");
@@ -199,7 +197,7 @@ public class MyFetchService extends IntentService {
                         if (!isReal) {
                             //This if statement changes the dummy data's date to match our current date range.
 
-                            Date fragmentdate = new Date(System.currentTimeMillis()+ ((i - 2) * 86400000));
+                            Date fragmentdate = new Date(System.currentTimeMillis() + ((i - 2) * 86400000));
                             SimpleDateFormat mformat = new SimpleDateFormat("yyyy-MM-dd");
                             mDate = mformat.format(fragmentdate);
                         }
@@ -225,14 +223,14 @@ public class MyFetchService extends IntentService {
                     //log spam
 
 
-                    Log.v(LOG_TAG,"############");
-                    Log.v(LOG_TAG,match_id);
-                    Log.v(LOG_TAG,mDate);
-                    Log.v(LOG_TAG,mTime);
-                    Log.v(LOG_TAG,Home);
-                    Log.v(LOG_TAG,Away);
-                    Log.v(LOG_TAG,Home_goals);
-                    Log.v(LOG_TAG,Away_goals);
+//                    Log.v(LOG_TAG, "############");
+//                    Log.v(LOG_TAG, match_id);
+//                    Log.v(LOG_TAG, mDate);
+//                    Log.v(LOG_TAG, mTime);
+//                    Log.v(LOG_TAG, Home);
+//                    Log.v(LOG_TAG, Away);
+//                    Log.v(LOG_TAG, Home_goals);
+//                    Log.v(LOG_TAG, Away_goals);
 
                     values.add(match_values);
                 }
@@ -244,14 +242,13 @@ public class MyFetchService extends IntentService {
             inserted_data = mContext.getContentResolver().bulkInsert(DatabaseContract.BASE_CONTENT_URI, insert_data);
 
 
-            Log.v(LOG_TAG, "Succesfully Inserted : " + String.valueOf(inserted_data));
+//            Log.v(LOG_TAG, "Succesfully Inserted : " + String.valueOf(inserted_data));
 
             //updateWidgets
             if (inserted_data > 0) {
                 Intent dataUpdated = new Intent(ACTION_DATA_UPDATED);
                 mContext.sendBroadcast(dataUpdated);
             }
-
 
 
         } catch (JSONException e) {
