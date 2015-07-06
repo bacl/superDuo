@@ -1,8 +1,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
-    <item android:id="@+id/action_settings"
-          android:title="@string/action_settings"
-          app:showAsAction="never"
-           />
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+   <!--
+    Bruno:
+        This Settings menu item should be on the drawer, since it is an action associated with the application and not specific to a given activity/screen.
+        The item should be placed at the end of the drawer.
+
+   -->
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
+
 </menu>

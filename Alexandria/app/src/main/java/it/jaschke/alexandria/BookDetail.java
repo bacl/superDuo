@@ -150,8 +150,8 @@ public class BookDetail extends Fragment implements LoaderManager.LoaderCallback
          *
          *
          */
-        if (MainActivity.IS_TABLET && rootView.findViewById(R.id.right_container) == null) {
+       /* if (MainActivity.IS_TABLET && rootView.findViewById(R.id.right_container) == null) {
             getActivity().getSupportFragmentManager().popBackStack();
-        }
+        }*/
     }
 }

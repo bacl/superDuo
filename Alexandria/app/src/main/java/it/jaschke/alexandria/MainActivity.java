@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -18,6 +19,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -84,13 +86,11 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
         IntentFilter filter = new IntentFilter(MESSAGE_EVENT);
         LocalBroadcastManager.getInstance(this).registerReceiver(messageReciever, filter);
 
-        navigationDrawerFragment = (NavigationDrawerFragment)
-                getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
+        navigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         title = getTitle();
 
         // Set up the drawer.
-        navigationDrawerFragment.setUp(R.id.navigation_drawer,
-                (DrawerLayout) findViewById(R.id.drawer_layout));
+        navigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
 
     }
 
@@ -114,9 +114,28 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment nextFragment;
+
+        /**
+         * BRUNO:
+         * Bug: On tablet layout, if the right_container is not empty, ie presents the details of the selected book from the list of books,
+         * Fix: since we added to the backStack now we remove it
+         */
+        if (IS_TABLET) {
+            Fragment fragment = fragmentManager.findFragmentByTag(FRG_BOOK_DETAIL_TAG);
+            if (fragment != null) {
+                getSupportFragmentManager().popBackStack();
+            }
+        }
+
+
+        /**
+         * BRUNO:
+         * Bug: if the same item is selected it is created a new fragment and added to the back stack.
+         * Fix: check if the the new item position is the same as the current one, if it is do nothing ie end method.
+         *
+         */
 
         switch (position) {
             default:
@@ -132,10 +151,16 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 
         }
 
+        /**
+         * BRUNO:
+         *   Since this is a horizontal navigation it should not add transactions to the back stack
+         *   Fix: remove addToBackStack() call
+         */
         fragmentManager.beginTransaction()
                 .replace(R.id.container, nextFragment)
-                .addToBackStack((String) title)
                 .commit();
+
+
     }
 
     public void setTitle(int titleId) {
@@ -197,11 +222,16 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
             id = R.id.right_container;
         }
 
-
-            getSupportFragmentManager().beginTransaction()
-                    .replace(id, fragment)
-                    .addToBackStack(FRG_BOOK_DETAIL_TAG)
-                    .commit();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        // if it is already there pop it out
+        if (IS_TABLET && fragmentManager.findFragmentByTag(FRG_BOOK_DETAIL_TAG) != null) {
+            getSupportFragmentManager().popBackStack();
+        }
+        // then add
+        fragmentManager.beginTransaction()
+                .replace(id, fragment, FRG_BOOK_DETAIL_TAG)
+                .addToBackStack(FRG_BOOK_DETAIL_TAG)
+                .commit();
 
     }
 
@@ -224,30 +254,27 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
                 >= Configuration.SCREENLAYOUT_SIZE_LARGE;
     }
 
+
     @Override
     public void onBackPressed() {
-        if (getSupportFragmentManager().getBackStackEntryCount() < 2) {
-            finish();
-        }
-        super.onBackPressed();
         /**
          * BRUNO:
-         *
-         *   In my opinion this app has a big problem of navigability, between screens.
-         *   And this is due to the developer actively modifies the backStack content,
-         *   by adding every single new fragment created to the stack
-         *   (except the navigation drawer that should be there)
-         *
-         *  Navigation drawer if it is being displayed, it do not hide when back button is pressed.
-         *
-         *  Also the back button on the UI app should not exists, because it is duplicating
-         *  a system functionality that is always present on the UI.
-         *
-         *  On the tablet (large screen devices) with displaying list of books and  book detail fragment
-         *  the back button removes all fragments of the activity
-         *
-         *
+         * The following code is not need after fixing the horizontal navigation  problem onNavigationDrawerItemSelected()
          */
+//        if (getSupportFragmentManager().getBackStackEntryCount() < 2) {
+//            finish();
+//        }
+//
+
+        /**
+         * BRUNO:
+         * Bug: if the navigation drawer was visible the back button ended the activity instead of hiding the drawer, for a proper navigation.
+         */
+        if (navigationDrawerFragment.isDrawerOpen()) {
+            navigationDrawerFragment.closeDrawers();
+        } else {
+            super.onBackPressed();
+        }
     }
 
 

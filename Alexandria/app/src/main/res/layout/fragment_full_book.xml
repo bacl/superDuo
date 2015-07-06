@@ -91,7 +91,7 @@
 
                 <!--
                 BRUNO:
-                    This undo button should not exist, because it is duplicating a system functionality that is always present on the UI
+                    This undo button should not exist, the app should not add a Back button to the UI.
 
                 <ImageButton
                     android:layout_width="wrap_content"

@@ -106,20 +106,6 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
         rootView.findViewById(R.id.scan_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // This is the callback method that the system will invoke when your button is
-                // clicked. You might do this by launching another app or by including the
-                //functionality directly in this app.
-                // Hint: Use a Try/Catch block to handle the Intent dispatch gracefully, if you
-                // are using an external app.
-                //when you're done, remove the toast below.
-
-/*                Context context = getActivity();
-                CharSequence text = "This button should let you scan a book for its barcode!";
-                int duration = Toast.LENGTH_SHORT;
-
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
-*/
 
                 /**
                  *  BRUNO:
@@ -145,6 +131,13 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
         rootView.findViewById(R.id.save_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                /**
+                 * BRUNO:
+                 * In my opinion this is a big problem: every new book is automatically added to library and this isn't what the user is expecting (at least I wasn't).
+                 * The book should only be added to the library after the user click on the save button  and not deleted it from the library if the user don't want it.
+                 */
+
                 ean.setText("");
                 clearFields();
             }

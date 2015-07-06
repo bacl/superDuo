@@ -71,15 +71,13 @@ public class NavigationDrawerFragment extends Fragment {
         mUserLearnedDrawer = sp.getBoolean(PREF_USER_LEARNED_DRAWER, false);
 
 
-
         if (savedInstanceState != null) {
             mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
             mFromSavedInstanceState = true;
-        }else{
+        } else {
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
-            mCurrentSelectedPosition = Integer.parseInt(prefs.getString("pref_startFragment","0"));
-           // mCurrentSelectedPosition = prefs.getInt(getString(R.string.pref_startFragment_key), getResources().getInteger(R.integer.pref_startFragment_default) );
+            mCurrentSelectedPosition = Integer.parseInt(prefs.getString(getString(R.string.pref_startFragment_key), getString(R.string.pref_startFragment_default)));
 
             selectItem(mCurrentSelectedPosition);
         }
@@ -170,12 +168,12 @@ public class NavigationDrawerFragment extends Fragment {
                     // The user manually opened the drawer; store this flag to prevent auto-showing
                     // the navigation drawer automatically in the future.
                     mUserLearnedDrawer = true;
-                    SharedPreferences sp = PreferenceManager
-                            .getDefaultSharedPreferences(getActivity());
+                    SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
                     sp.edit().putBoolean(PREF_USER_LEARNED_DRAWER, true).apply();
                 }
 
                 getActivity().supportInvalidateOptionsMenu(); // calls onPrepareOptionsMenu()
+
             }
         };
 
@@ -194,6 +192,7 @@ public class NavigationDrawerFragment extends Fragment {
         });
 
         mDrawerLayout.setDrawerListener(mDrawerToggle);
+
     }
 
     private void selectItem(int position) {
@@ -271,6 +270,10 @@ public class NavigationDrawerFragment extends Fragment {
 
     private ActionBar getActionBar() {
         return ((ActionBarActivity) getActivity()).getSupportActionBar();
+    }
+
+    public void closeDrawers() {
+        mDrawerLayout.closeDrawers();
     }
 
     /**
