@@ -77,7 +77,7 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
                 }
 
                 /**
-                 * BRUNO:
+                 * ERROR CASE:
                  *
                  *  The number "978" should be in a static field of the class, since it is used multiple times.
                  *
@@ -108,7 +108,7 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
             public void onClick(View v) {
 
                 /**
-                 *  BRUNO:
+                 *  ERROR CASE:
                  *
                  * To include a camera barcode reader functionality (without requiring an extra app)
                  * I made use of the following library:
@@ -133,7 +133,7 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
             public void onClick(View view) {
 
                 /**
-                 * BRUNO:
+                 * ERROR CASE:
                  * In my opinion this is a big problem: every new book is automatically added to library and this isn't what the user is expecting (at least I wasn't).
                  * The book should only be added to the library after the user click on the save button  and not deleted it from the library if the user don't want it.
                  */

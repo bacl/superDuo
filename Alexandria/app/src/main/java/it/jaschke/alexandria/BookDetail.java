@@ -139,7 +139,7 @@ public class BookDetail extends Fragment implements LoaderManager.LoaderCallback
     public void onPause() {
         super.onDestroyView();
         /**
-         * BRUNO:
+         * ERROR CASE:
          *  On the tablet (large screen devices) with displaying list of books and  book detail fragment
          *  the back button removes all fragments of the activity back stack
          *  This behavior is cause by the following IF .

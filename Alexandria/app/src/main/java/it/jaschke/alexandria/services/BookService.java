@@ -76,7 +76,7 @@ public class BookService extends IntentService {
     private void fetchBook(String ean) {
 
         /**
-         * BRUNO:
+         * ERROR CASE:
          *  Quick fix a bug that crashes th app when there is no internet connection and the user tray to perform a search.
          *  if not connected, end the execution of this method and show a toast message informing the user
          */

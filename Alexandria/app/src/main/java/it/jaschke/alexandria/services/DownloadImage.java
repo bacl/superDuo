@@ -34,7 +34,7 @@ public class DownloadImage extends AsyncTask<String, Void, Bitmap> {
         Bitmap bookCover = null;
 
         /**
-         * BRUNO:
+         * ERROR CASE:
          * BUG:
          *  Appends when there is no internet connection and the UI trains to load an image
          *  if not connected, the execution of this method will return null and the book entry it will not display a cover and messing with the UI;

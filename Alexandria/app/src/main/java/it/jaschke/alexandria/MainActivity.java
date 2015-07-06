@@ -41,7 +41,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
      */
     private CharSequence title;
     /**
-     * BRUNO:
+     * ERROR CASE:
      * IS_TABLET the value of this variable is being modified on runtime and used in different class's
      * should be used a sharedPreference to do it.
      */
@@ -63,7 +63,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
             setContentView(R.layout.activity_main);
         }
         /**
-         * BRUNO:
+         * ERROR CASE:
          * There is no reason to manually handling the selection of the layout,
          * since the same the result can be achieved using android app Resources with the qualifier larger
          *
@@ -118,7 +118,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
         Fragment nextFragment;
 
         /**
-         * BRUNO:
+         * ERROR CASE:
          * Bug: On tablet layout, if the right_container is not empty, ie presents the details of the selected book from the list of books,
          * Fix: since we added to the backStack now we remove it
          */
@@ -131,7 +131,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 
 
         /**
-         * BRUNO:
+         * ERROR CASE:
          * Bug: if the same item is selected it is created a new fragment and added to the back stack.
          * Fix: check if the the new item position is the same as the current one, if it is do nothing ie end method.
          *
@@ -152,7 +152,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
         }
 
         /**
-         * BRUNO:
+         * ERROR CASE:
          *   Since this is a horizontal navigation it should not add transactions to the back stack
          *   Fix: remove addToBackStack() call
          */
@@ -258,7 +258,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
     @Override
     public void onBackPressed() {
         /**
-         * BRUNO:
+         * ERROR CASE:
          * The following code is not need after fixing the horizontal navigation  problem onNavigationDrawerItemSelected()
          */
 //        if (getSupportFragmentManager().getBackStackEntryCount() < 2) {
@@ -267,7 +267,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 //
 
         /**
-         * BRUNO:
+         * ERROR CASE:
          * Bug: if the navigation drawer was visible the back button ended the activity instead of hiding the drawer, for a proper navigation.
          */
         if (navigationDrawerFragment.isDrawerOpen()) {

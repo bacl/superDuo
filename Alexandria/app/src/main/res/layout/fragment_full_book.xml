@@ -90,7 +90,7 @@
                 </LinearLayout>
 
                 <!--
-                BRUNO:
+                ERROR CASE:
                     This undo button should not exist, the app should not add a Back button to the UI.
 
                 <ImageButton
