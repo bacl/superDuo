@@ -42,8 +42,8 @@ public class MainScreenFragment extends Fragment implements LoaderManager.Loader
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState) {
         /**
-         * BRUNO:
-         * ERROR - Updating the scores every time the user selects a different page fragment. This generates too many requests to the api server.
+         * ERROR CASE:
+         * Updating the scores every time the user selects a different page fragment. This generates too many requests to the api server.
          *
          */
         update_scores();
