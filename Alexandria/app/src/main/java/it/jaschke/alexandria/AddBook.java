@@ -83,8 +83,8 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
                  *
                  *  It is not clear to the user when the search occurs
                  *
-                 * Commented clearFields(); to fix the disapearing results bug
-                 * add toast to informe user??
+                 * Commented clearFields(); to fix the disappearing results bug
+                 *
                  */
 
                 if (ean.length() < 13) {
@@ -135,7 +135,6 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
                 integrator.setOrientationLocked(false);
                 integrator.setDesiredBarcodeFormats(IntentIntegrator.ONE_D_CODE_TYPES);
                 integrator.setPrompt(getActivity().getString(R.string.msg_scan_barcode));
-                // integrator.setCameraId(0);  // Use a specific camera of the device
                 integrator.setBeepEnabled(false);
                 integrator.initiateScan();
 
@@ -147,6 +146,7 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
             @Override
             public void onClick(View view) {
                 ean.setText("");
+                clearFields();
             }
         });
 
@@ -158,6 +158,7 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
                 bookIntent.setAction(BookService.DELETE_BOOK);
                 getActivity().startService(bookIntent);
                 ean.setText("");
+                clearFields();
             }
         });
 
