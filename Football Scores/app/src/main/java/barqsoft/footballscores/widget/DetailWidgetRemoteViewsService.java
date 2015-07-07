@@ -20,7 +20,7 @@ import barqsoft.footballscores.data.DatabaseContract;
  */
 
 /**
- * RemoteViewsService controlling the data being shown in the scrollable weather detail widget
+ * RemoteViewsService controlling the data being shown in the scrollable detail widget
  */
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class DetailWidgetRemoteViewsService extends RemoteViewsService {

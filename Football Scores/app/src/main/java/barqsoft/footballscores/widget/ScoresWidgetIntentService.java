@@ -52,7 +52,7 @@ public class ScoresWidgetIntentService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        // Retrieve all of the Today widget ids: these are the widgets we need to update
+        // Retrieve all of the widget ids: these are the widgets we need to update
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this);
         int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(this, ScoresWidgetProvider.class));
 
@@ -64,7 +64,7 @@ public class ScoresWidgetIntentService extends IntentService {
         boolean hasData = (data != null) && data.moveToFirst();
 
 
-        // Perform this loop procedure for each Today widget
+        // Perform this loop procedure for each widget
         for (int appWidgetId : appWidgetIds) {
             RemoteViews views;
 

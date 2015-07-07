@@ -21,7 +21,7 @@ import barqsoft.footballscores.R;
 import barqsoft.footballscores.service.MyFetchService;
 
 /**
- * Provider for a scrollable weather detail widget
+ * Provider for a scrollable detail widget
  */
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class DetailWidgetProvider extends AppWidgetProvider {

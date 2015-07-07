@@ -24,7 +24,7 @@ public class PagerFragment extends Fragment {
     public static final int NUM_PAGES = 5;
     public ViewPager mPagerHandler;
     private MyPageAdapter mPagerAdapter;
-    private MainScreenFragment[] viewFragments = new MainScreenFragment[5];
+    private MainScreenFragment[] viewFragments = new MainScreenFragment[NUM_PAGES];
 
 
     @Override
@@ -32,13 +32,15 @@ public class PagerFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.pager_fragment, container, false);
         mPagerHandler = (ViewPager) rootView.findViewById(R.id.pager);
         mPagerAdapter = new MyPageAdapter(getChildFragmentManager());
+
+        SimpleDateFormat mformat = new SimpleDateFormat("yyyy-MM-dd");
+
         for (int i = 0; i < NUM_PAGES; i++) {
             Date fragmentDate = new Date(System.currentTimeMillis() + ((i - 2) * 86400000));
-
-            SimpleDateFormat mformat = new SimpleDateFormat("yyyy-MM-dd");
             viewFragments[i] = new MainScreenFragment();
             viewFragments[i].setFragmentDate(mformat.format(fragmentDate));
         }
+
         mPagerHandler.setAdapter(mPagerAdapter);
         mPagerHandler.setCurrentItem(MainActivity.current_fragment);
 
