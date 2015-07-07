@@ -9,7 +9,19 @@
 
 
     <string name="share_text">Share</string>
+
     <string name="share_text_description">Share</string>
+    <string name="home_name_content_description">Home team name</string>
+    <string name="home_crest_content_description">Home team crest</string>
+    <string name="score_content_description">Score</string>
+    <string name="time_content_description">Schedule</string>
+    <string name="away_name_content_description">Away team name</string>
+    <string name="away_crest_content_description">Away team crest</string>
+    <string name="app_name_content_description">Application name</string>
+    <string name="empty_list_content_description">Information status</string>
+    <string name="about_content_description">Information about this application</string>
+    <string name="matchday_content_description">Matchday</string>
+    <string name="league_content_description">League name.</string>
 
     <string name="about">About</string>
     <string name="about_text">
@@ -43,5 +55,6 @@
     <string name="match_day_champions_league_final">Final</string>
     <string name="match_day_matchday">"Match day : "<xliff:g example="6" id="day">%s</xliff:g></string>
     <string name="share_tag_football_scores" translatable="false">#Football_Scores</string>
+
 
 </resources>

@@ -57,8 +57,6 @@ public class ScoresAdapter extends CursorAdapter {
         mHolder.home_crest.setImageResource(Utilities.getTeamCrestByTeamName(cursor.getString(COL_HOME)));
         mHolder.away_crest.setImageResource(Utilities.getTeamCrestByTeamName(cursor.getString(COL_AWAY)));
 
-        mHolder.home_crest.setContentDescription(null);
-        mHolder.away_crest.setContentDescription(null); 
 
         LayoutInflater vi = (LayoutInflater) context.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v = vi.inflate(R.layout.detail_fragment, null);

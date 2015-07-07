@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:contentDescription="@string/score_content_description"
             android:gravity="center"
             android:textSize="@dimen/widget_score" />
 
@@ -24,6 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:contentDescription="@string/home_name_content_description"
             android:gravity="center"
             android:text="@string/empty_list"
             android:textSize="@dimen/widget_team_names" />
@@ -33,6 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:contentDescription="@string/away_name_content_description"
             android:gravity="center"
             android:textSize="@dimen/widget_team_names" />
     </LinearLayout>

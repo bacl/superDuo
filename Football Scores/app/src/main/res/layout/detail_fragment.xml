@@ -15,6 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:contentDescription="@string/league_content_description"
             android:text="@string/test_text"
             android:textColor="@android:color/black"
             android:textSize="@dimen/league_text_size" />
@@ -27,6 +28,7 @@
             android:gravity="center"
             android:text="@string/test_text"
             android:textColor="@android:color/black"
+            android:contentDescription="@string/matchday_content_description"
             android:textSize="@dimen/league_text_size" />
     </LinearLayout>
 

@@ -23,7 +23,8 @@
                 android:id="@+id/home_crest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:contentDescription="@string/home_crest_content_description" />
 
             <TextView
                 android:id="@+id/home_name"
@@ -31,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center" 
                 android:textSize="@dimen/team_names_text_size"
- 
+                android:contentDescription="@string/home_name_content_description"
                 android:gravity="center"
                 android:text="@string/test_text" />
         </LinearLayout>
@@ -50,6 +51,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:textSize="@dimen/score_text_size"
+                android:contentDescription="@string/score_content_description"
                  />
 
             <TextView
@@ -59,6 +61,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:contentDescription="@string/time_content_description"
                 android:text="@string/test_text" />
 
         </LinearLayout>
@@ -73,7 +76,8 @@
                 android:id="@+id/away_crest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:contentDescription="@string/away_crest_content_description" />
 
             <TextView
                 android:id="@+id/away_name"
@@ -82,7 +86,8 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:textSize="@dimen/team_names_text_size"
-                android:text="@string/test_text"/>
+                android:text="@string/test_text"
+                android:contentDescription="@string/away_name_content_description"/>
 
         </LinearLayout>
     </LinearLayout>

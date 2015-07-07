@@ -14,12 +14,12 @@
         android:paddingEnd="@dimen/activity_horizontal_margin"
         android:paddingStart="@dimen/activity_horizontal_margin">
 
-
         <TextView
             android:id="@+id/widget_details_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:contentDescription="@string/app_name_content_description"
             android:text="@string/app_name"
             android:textAppearance="?android:attr/textAppearanceLarge" />
     </FrameLayout>
@@ -43,6 +43,7 @@
             android:id="@+id/widget_empty"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:contentDescription="@string/empty_list_content_description"
             android:fontFamily="sans-serif-condensed"
             android:gravity="center"
             android:text="@string/empty_list"

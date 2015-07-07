@@ -86,10 +86,6 @@ public class ScoresWidgetIntentService extends IntentService {
                     views.setImageViewResource(R.id.home_crest, Utilities.getTeamCrestByTeamName(data.getString(INDEX_HOME_COL)));
                     views.setImageViewResource(R.id.away_crest, Utilities.getTeamCrestByTeamName(data.getString(INDEX_AWAY_COL)));
                     views.setTextViewText(R.id.data_textview, data.getString(INDEX_TIME_COL));
-                    if (Build.VERSION.SDK_INT > Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
-                        views.setContentDescription(R.id.home_crest, null);
-                        views.setContentDescription(R.id.away_crest, null);
-                    }
                 }
 
 
@@ -98,10 +94,7 @@ public class ScoresWidgetIntentService extends IntentService {
                 views.setTextViewText(R.id.score_textview, Utilities.getScores(data.getInt(INDEX_HOME_GOALS_COL), data.getInt(INDEX_AWAY_GOALS_COL)));
 
 
-                // Content Descriptions for RemoteViews were only added in ICS MR1
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
-                    setRemoteContentDescription(views, getString(R.string.widget_description));
-                }
+                
                 // Create an Intent to launch MainActivity
                 Intent launchIntent = new Intent(this, MainActivity.class);
                 PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, launchIntent, 0);
@@ -146,8 +139,5 @@ public class ScoresWidgetIntentService extends IntentService {
     }
 
 
-    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
-    private void setRemoteContentDescription(RemoteViews views, String description) {
-        views.setContentDescription(R.id.home_crest, description);
-    }
+
 }
